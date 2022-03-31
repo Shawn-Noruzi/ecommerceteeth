@@ -2,14 +2,25 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className=" mx-auto max-w-screen-xl px-4 text-center">
-      <div className="w-full h-full">
+    <div className=" mx-auto max-w-screen-2xl h-screen px-4 text-center">
+      <div className="text-center w-4/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-2/4 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
+        <h1 className="header1Font mb-2 text-white ">20% off storewide</h1>
+        <h2 className="header2Font mb-3 text-white">Introducing V34 Foam, <br/>
+          15 seconds to brighter teeth.</h2>
+        <div className=" flex items-center flex-col lg:items-start lg:flex-row mb-3">
+          <button className="border-2 max-w-sm mb-3 mt-3 border-white bg-white transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto">
+            Shop the Sale
+          </button><button className="border-2 max-w-sm border-white transition-all hover:-translate-y-1  text-white font-bold py-4 px-6 rounded-full w-full lg:w-auto">
+            Shop The V3Foam
+          </button>
+        </div>
+      </div>
+      <div className="w-full h-full ">
         <video
-         muted
-         autoPlay
+          muted
+          autoPlay
           loop="loop"
           dataAutoplay=""
-    
           src="https://cdn.shopify.com/s/files/1/0567/3366/3255/files/teethv.mp4?v=1647445986"
           height="720"
           width="1620"
