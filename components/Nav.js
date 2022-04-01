@@ -4,7 +4,7 @@ import { CartContext } from "../context/shopContext";
 import MiniCart from "./MiniCart";
 import Image from "next/image";
 import { HamburgerElastic } from "react-animated-burgers";
-
+import useWindowSize from "../utils/useWindowSize";
 
 export default function Nav() {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
@@ -17,12 +17,12 @@ export default function Nav() {
   });
 
   return (
-    <div>
+    <div className="relative">
       <div className="width-full bg-black text-center pb-2 pt-2">
         <p className="text-white ">Use code: WHITENOW for 20% off</p>
       </div>
       <header className="border-b sticky top-0 z-20 bg-white">
-        <div className="flex items-center justify-between max-w-6xl pt-4 pb-2 px-4 mx-auto lg:max-w-screen-xl">
+        <div className="flex items-center justify-between max-w-6xl pt-4 pb-2 px-4 mx-auto lg:max-w-screen-2xl">
           <div className="flex lg:hidden">
             <HamburgerElastic
               isActive={toggleButton}
@@ -70,7 +70,7 @@ export default function Nav() {
           <MiniCart cart={cart} />
         </div>
       </header>
-      <div className={toggleButton ? "w-1/4 bg-white transition-all duration-300 ease-in-out translate-x-0 flex flex-col" : "w-1/4 bg-white transition-all ease-in-out -translate-x-full flex flex-col"}>
+      <div className={toggleButton ? "absolute z-20 left-0 w-1/2 h-screen  bg-white transition-all duration-300 ease-in-out translate-x-0 flex flex-col" : "absolute -z-10  bg-white transition-all ease-in-out -translate-x-full flex flex-col"}>
 
         <Link href="/">
           <a className="">

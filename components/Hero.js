@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className=" mx-auto max-w-screen-2xl h-screen px-4 text-center">
+    <div className=" mx-auto  h-screen px-4 text-center">
       <div className="text-center w-4/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-2/4 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
         <h1 className="header1Font mb-2 text-white ">20% off storewide</h1>
         <h2 className="header2Font mb-3 text-white">Introducing V34 Foam, <br/>
