@@ -9,7 +9,7 @@ import useWindowSize from "../utils/useWindowSize";
 export default function Nav() {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
-
+  const size = useWindowSize();
 
   let cartQuantity = 0;
   cart.map((item) => {
@@ -70,7 +70,7 @@ export default function Nav() {
           <MiniCart cart={cart} />
         </div>
       </header>
-      <div className={toggleButton ? "absolute z-20 left-0 w-1/2 h-screen  bg-white transition-all duration-300 ease-in-out translate-x-0 flex flex-col" : "absolute -z-10  bg-white transition-all ease-in-out -translate-x-full flex flex-col"}>
+      <div className={toggleButton && size.width < 1025 ? "absolute z-20 left-0 w-1/2 h-screen  bg-white transition-all duration-300 ease-in-out translate-x-0 flex flex-col" : "absolute -z-10  bg-white transition-all ease-in-out -translate-x-full flex flex-col"}>
 
         <Link href="/">
           <a className="">

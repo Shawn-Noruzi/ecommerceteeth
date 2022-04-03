@@ -7,7 +7,7 @@ export default function Hero() {
         <h1 className="header1Font mb-2 text-white ">20% off storewide</h1>
         <h2 className="header2Font mb-3 text-white">Introducing V34 Foam, <br/>
           15 seconds to brighter teeth.</h2>
-        <div className=" flex items-center flex-col lg:items-start lg:flex-row mb-3">
+        <div className=" flex items-center flex-col lg:items-baseline lg:flex-row mb-3">
           <button className="border-2 max-w-sm mb-3 mt-3 border-white bg-white transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto">
             Shop the Sale
           </button><button className="border-2 max-w-sm border-white transition-all hover:-translate-y-1  text-white font-bold py-4 px-6 rounded-full w-full lg:w-auto">
