@@ -1,31 +1,115 @@
 .component-video {
-    height:100%;
-    width:100%;
-    object-fit: cover;
-    filter:brightness(0.7)
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
 }
 
-.header1Font{
-    font-family: Pulp,Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -.03em;
-    font-size:3rem;
+.header1Font {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-size: 3rem;
 }
-.header2Font{
-    font-family: Pulp,Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -.03em;
-    font-size:2rem;
+
+.header2Font {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-size: 2rem;
+}
+
+.section1Font {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-size: 3rem;
+}
+.section2Font {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-size: 2rem;
 }
 @media only screen and (max-width: 600px) {
-   .header2Font{
-       font-size:1.5rem;
-   }
+  .header2Font {
+    font-size: 1.5rem;
   }
-.centerAbsoluteContent{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+  .section1Font {
+    font-size: 2rem;
+  }
+  .section2Font {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .section2Font {
+    font-size: 1.5rem;
+    max-width: 300px;
+  }
+}
+.centerAbsoluteContent {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prosImageContainer {
+  height: 650px;
+}
+@media only screen and (max-width: 1024px) {
+  .prosImageContainer {
+    height: 400px;
+  }
+}
+
+.arrow {
+  width: 15px;
+}
+.roundedDiv {
+  border: 2px solid transparent;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.submitButton {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.301);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.faqTitleFont {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 2rem;
+  margin-bottom:15px;
+}
+
+.faqTextFont {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1;
+  font-size: 1.5rem;
+  margin-left:15px;
+}
+
+.arrowFaq{
+    width:25px;
+    height:25px;
+}
+
+.socialIconContainer{
+    padding-top:25px;
+    margin-left:15px;
 }

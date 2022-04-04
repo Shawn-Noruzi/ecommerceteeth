@@ -1,11 +1,12 @@
 import { getProductsInCollection } from "../lib/shopify"
 import ProductList from "../components/ProductList"
 import Hero from "../components/Hero"
+import Pros from "../components/Pros"
 import Head from 'next/head'
-
+import useWindowSize from "../utils/useWindowSize";
 
 export default function Home({ products }) {
-
+  const size = useWindowSize();
   return (
     <div className="">
       <Head>
@@ -24,6 +25,7 @@ export default function Home({ products }) {
       </Head>
       <Hero />
       <ProductList products={products} />
+      <Pros size={size}/>
     </div>
   )
 }
