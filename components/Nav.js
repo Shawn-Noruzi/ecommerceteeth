@@ -4,12 +4,12 @@ import { CartContext } from "../context/shopContext";
 import MiniCart from "./MiniCart";
 import Image from "next/image";
 import { HamburgerElastic } from "react-animated-burgers";
-import useWindowSize from "../utils/useWindowSize";
 
-export default function Nav() {
+
+export default function Nav({size}) {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
-  const size = useWindowSize();
+
 
   let cartQuantity = 0;
   cart.map((item) => {
@@ -39,19 +39,19 @@ export default function Nav() {
             </a>
           </Link>
           <div className=" items-center justify-between hidden space-x-8 lg:flex -ml-36">
-            <Link href="/">
+            <Link href="/professionals">
               <a className="">
-                Professionals Store{" "}
+                Professionals {" "}
 
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/products">
               <a className="mr-12">
                 Products{" "}
 
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/faq">
               <a className="mr-12">FAQ </a>
             </Link>
           </div>
@@ -84,7 +84,7 @@ export default function Nav() {
 
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/faq">
           <a className="mr-12">FAQ </a>
         </Link>
       </div>
