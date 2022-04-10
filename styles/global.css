@@ -13,6 +13,13 @@
   font-size: 3rem;
 }
 
+.faqTitle {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+
+}
 .header2Font {
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -62,11 +69,6 @@
 .prosImageContainer {
   height: 650px;
 }
-@media only screen and (max-width: 1024px) {
-  .prosImageContainer {
-    height: 400px;
-  }
-}
 
 .arrow {
   width: 15px;
@@ -93,23 +95,43 @@
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 1.25;
-  font-size: 2rem;
-  margin-bottom:15px;
+
+  margin-bottom: 15px;
 }
 
 .faqTextFont {
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 1;
+
+}
+
+.arrowFaq {
+  width: 25px;
+  height: 25px;
+}
+
+.socialIconContainer {
+  padding-top: 25px;
+  margin-left: 15px;
+}
+
+.navTitle {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
   font-size: 1.5rem;
-  margin-left:15px;
+  margin-left: 20px;
 }
 
-.arrowFaq{
-    width:25px;
-    height:25px;
+.burgerStyles > button {
+  padding:0!important;
 }
-
-.socialIconContainer{
-    padding-top:25px;
-    margin-left:15px;
+@media only screen and (max-width: 1024px) {
+  .prosImageContainer {
+    height: 400px;
+  }
+  .navTitle {
+    margin-left: unset;
+  }
 }

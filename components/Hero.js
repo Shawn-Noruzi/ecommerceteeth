@@ -34,9 +34,9 @@ export default function Hero({ products, professionals, faq }) {
     );
   } else if (faq) {
     return (
-      <div className=" mx-auto max-w-screen-2xl relative px-4 text-center">
-        <div className="text-center w-4/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-1/3 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
-          <h1 className="header1Font mb-2 text-white ">
+      <div className=" mx-auto max-w-screen-2xl relative  text-center">
+        <div className="text-center w-4/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 lg:top-1/3 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
+          <h1 className="faqTitle mb-2 text-white text-3xl md:text-5xl ">
           Frequently Asked Questions
           </h1>
           {/* <h2 className="header2Font mb-3 text-white">
@@ -49,8 +49,8 @@ export default function Hero({ products, professionals, faq }) {
     );
   } else {
     return (
-      <div className=" mx-auto max-w-screen-2xl relative h-screen px-4 text-center">
-        <div className="text-center w-4/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-1/3 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
+      <div className=" mx-auto max-w-screen-2xl relative h-[40rem] px-4 text-center">
+        <div className="text-center w-4/5 absolute top-1/2 lg:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
           <h1 className="header1Font mb-2 text-white ">
             30% Sale on All Products
           </h1>

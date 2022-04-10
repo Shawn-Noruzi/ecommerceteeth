@@ -19,11 +19,11 @@ export default function Nav({size}) {
   return (
     <div className="relative">
       <div className="width-full bg-black text-center pb-2 pt-2">
-        <p className="text-white ">Use code: WHITENOW for 20% off</p>
+        <p className="text-white text-md font-medium ">Use WHITENOW for 20% Off</p>
       </div>
       <header className="border-b sticky top-0 z-20 bg-white">
-        <div className="flex items-center justify-between max-w-6xl pt-4 pb-2 px-4 mx-auto lg:max-w-screen-2xl">
-          <div className="flex lg:hidden">
+        <div className="flex items-center justify-between max-w-6xl pt-4 pb-2 px-1 sm:px-4 mx-auto lg:max-w-screen-2xl">
+          <div className="flex lg:hidden scale-50 sm:scale-75 burgerStyles">
             <HamburgerElastic
               isActive={toggleButton}
               toggleButton={() => setToggleButton(!toggleButton)}
@@ -33,36 +33,36 @@ export default function Nav({size}) {
           </div>
           <Link href="/" passHref>
             <a className="cursor-pointer">
-              <span className="text-lg pt-1 font-bold">
+              <span className="text-lg pt-1 font-bold navTitle">
                 Beautiful Bright Smile
               </span>
             </a>
           </Link>
-          <div className=" items-center justify-between hidden space-x-8 lg:flex -ml-36">
+          <div className=" items-center justify-between hidden lg:flex -ml-36 w-80">
             <Link href="/professionals">
-              <a className="">
+              <a className="text-lg font-medium text-gray-900">
                 Professionals {" "}
 
               </a>
             </Link>
             <Link href="/products">
-              <a className="mr-12">
+              <a className="text-lg font-medium text-gray-900">
                 Products{" "}
 
               </a>
             </Link>
             <Link href="/faq">
-              <a className="mr-12">FAQ </a>
+              <a className="text-lg font-medium text-gray-900">FAQ </a>
             </Link>
           </div>
           <a
-            className="text-md font-bold cursor-pointer flex items-center"
+            className="text-md font-bold cursor-pointer flex items-center sm:mr-5"
             onClick={() => setCartOpen(!cartOpen)}
           >
             <Image
               src="/Assets/icons/cart1.png"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
               alt="cart icon"
             />{" "}
             ({cartQuantity})
