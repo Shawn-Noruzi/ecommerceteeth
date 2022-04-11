@@ -14,7 +14,7 @@ const ProductList = ({ products, productPage, productCategory }) => {''
         }
       >
         <div className="flex justify-between">
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
             {productPage ? null : "Featured"}
           </h2>
           {productPage ? null : (
