@@ -37,8 +37,8 @@ export default function Faq() {
         <meta property="og:site_name" content="Beautiful Bright Smile" />
       </Head>
       <Hero faq />
-      <div className="mt-12 mx-auto max-w-screen-2xl relative px-4">
-        <div className="flex flex-col">
+      <div className="mt-12 mx-auto max-w-screen-2xl relative px-3 lg:px-10">
+        <div className="flex flex-col lg:w-3/4 lg:mx-auto">
           <div
             onClick={() =>
               setOpenBoxes((prev) => {
@@ -50,7 +50,7 @@ export default function Faq() {
             }
             className="flex justify-between mb-4"
           >
-            <h2 className="faqTitleFont">
+            <h2 className="faqTitleFont text-xl w-11/12 md:text-2xl">
               What are the ingredients in your gels?
             </h2>
             <img
@@ -70,7 +70,7 @@ export default function Faq() {
                 : " ease-out max-h-0 opacity-0 transition-all duration-300"
             }
           >
-            <h2 className="faqTextFont">
+            <h2 className="faqTextFont lg:ml-4 text-xl lg:text-2xl w-11/12">
               Our current gels and ingredients can be found on our ingredients
               page: www.beautifulbrightsmile.com/ingredients <br />
               <br /> All gels are Health Canada and FDA registered.
@@ -98,7 +98,7 @@ export default function Faq() {
         </div>
         <div className="divider" />
 
-        <div className="flex flex-col">
+        <div className="flex flex-col lg:w-3/4 lg:mx-auto">
           <div
             onClick={() =>
               setOpenBoxes((prev) => {
@@ -110,7 +110,7 @@ export default function Faq() {
             }
             className="flex justify-between mb-4"
           >
-            <h2 className="faqTitleFont">
+            <h2 className="faqTitleFont text-xl w-11/12 md:text-2xl">
               Is it safe to book a treatment or use an at home kit if I have
               crowns or fillings?
             </h2>
@@ -131,7 +131,7 @@ export default function Faq() {
                 : " ease-out max-h-0 opacity-0 transition-all duration-300"
             }
           >
-            <h2 className="faqTextFont">
+            <h2 className="faqTextFont lg:ml-4 text-xl lg:text-2xl w-11/12">
               Yes! All Beautiful Bright Smile products are safe on restorations
               (composite or porcelain). The gel will lift any stain that has
               accumulated on these pieces and restore them to the color they
@@ -161,7 +161,7 @@ export default function Faq() {
         </div>
         <div className="divider" />
 
-        <div className="flex flex-col">
+        <div className="flex flex-col lg:w-3/4 lg:mx-auto">
           <div
             onClick={() =>
               setOpenBoxes((prev) => {
@@ -173,7 +173,7 @@ export default function Faq() {
             }
             className="flex justify-between mb-4"
           >
-            <h2 className="faqTitleFont">
+            <h2 className="faqTitleFont text-xl w-11/12 md:text-2xl">
             Is it safe to whiten my teeth when I am pregnant?
             </h2>
             <img
@@ -193,7 +193,7 @@ export default function Faq() {
                 : " ease-out max-h-0 opacity-0 transition-all duration-300"
             }
           >
-            <h2 className="faqTextFont">
+            <h2 className="faqTextFont lg:ml-4 text-xl lg:text-2xl w-11/12">
             We do NOT recommend using products containing peroxide when pregnant or nursing. 
 
 We do however recommend our PURE kits and treatements for nursing mommas and if pregnant please consult your doctor with our PURE ingredient list before using!
@@ -221,7 +221,7 @@ We do however recommend our PURE kits and treatements for nursing mommas and if 
         </div>
         <div className="divider" />
 
-        <div className="flex flex-col">
+        <div className="flex flex-col lg:w-3/4 lg:mx-auto">
           <div
             onClick={() =>
               setOpenBoxes((prev) => {
@@ -233,7 +233,7 @@ We do however recommend our PURE kits and treatements for nursing mommas and if 
             }
             className="flex justify-between mb-4"
           >
-            <h2 className="faqTitleFont">
+            <h2 className="faqTitleFont text-xl w-11/12 md:text-2xl">
             Will this cause sensitivity?
             </h2>
             <img
@@ -253,7 +253,7 @@ We do however recommend our PURE kits and treatements for nursing mommas and if 
                 : " ease-out max-h-0 opacity-0 transition-all duration-300"
             }
           >
-            <h2 className="faqTextFont">
+            <h2 className="faqTextFont lg:ml-4 text-xl lg:text-2xl w-11/12">
             Our gels are very gentle on your teeth, that being said we cannot guarantee no sensitivity at all. For in studio treatments we have our after treatment remineralisation gel which soothes the dehydrated teeth, helping to eliminate any sensitivity.
 
 We also offer peroxide free solutions which do not contain acidic agents. </h2>

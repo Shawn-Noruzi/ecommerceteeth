@@ -5,16 +5,18 @@ const ProductCategories = ({ product, setProductCategory }) => {
 
   const categoryHandler = (value, category) => {
     setActive(value);
-    setProductCategory(category)
+    setProductCategory(category);
   };
   return (
-    <div className="flex justify-center mt-10 mx-auto max-w-screen-2xl relative px-4 text-center">
+    <div className="flex  mt-10  max-w-2xl mx-auto  lg:max-w-7xl ">
+      <h2 className="text-lg font-bold underline mr-1">Categories</h2>
+      <h2 className="text-lg font-bold mr-4">:</h2>
       <button
         onClick={() => categoryHandler("1", "")}
         className={
           active === "1"
-            ? "border-2 max-w-sm mb-3 mt-3 border-black transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
-            : "border-2 max-w-sm mb-3 mt-3 text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
+            ? " max-w-sm  transition-all   font-bold  rounded-full mr-4 w-full lg:w-auto"
+            : " max-w-sm  text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold  rounded-full mr-4 w-full lg:w-auto"
         }
       >
         All
@@ -23,8 +25,8 @@ const ProductCategories = ({ product, setProductCategory }) => {
         onClick={() => categoryHandler("2", "50")}
         className={
           active === "2"
-            ? "border-2 max-w-sm mb-3 mt-3 border-black transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
-            : "border-2 max-w-sm mb-3 mt-3 text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
+            ? " max-w-sm  transition-all   font-bold  rounded-full mr-4 w-full lg:w-auto"
+            : " max-w-sm  text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold  rounded-full mr-4 w-full lg:w-auto"
         }
       >
         Less than 50$
@@ -33,8 +35,8 @@ const ProductCategories = ({ product, setProductCategory }) => {
         onClick={() => categoryHandler("3", "Sale")}
         className={
           active === "3"
-            ? "border-2 max-w-sm mb-3 mt-3 border-black transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
-            : "border-2 max-w-sm mb-3 mt-3 text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
+            ? " max-w-sm  transition-all  font-bold  rounded-full mr-4 w-full lg:w-auto"
+            : " max-w-sm  text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold  rounded-full mr-4 w-full lg:w-auto"
         }
       >
         On Sale
@@ -43,11 +45,11 @@ const ProductCategories = ({ product, setProductCategory }) => {
         onClick={() => categoryHandler("4", "New")}
         className={
           active === "4"
-            ? "border-2 max-w-sm mb-3 mt-3 border-black transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
-            : "border-2 max-w-sm mb-3 mt-3 text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto"
+            ? " max-w-sm  transition-all   font-bold  rounded-full mr-4 w-full lg:w-auto"
+            : " max-w-sm  text-gray-400 border-gray-400 transition-all hover:-translate-y-1  font-bold  rounded-full mr-4 w-full lg:w-auto"
         }
       >
-        Newly Added
+        New
       </button>
     </div>
   );

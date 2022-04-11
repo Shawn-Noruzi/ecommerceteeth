@@ -13,6 +13,12 @@
   font-size: 3rem;
 }
 
+.faqTitle {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
 .header2Font {
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -62,14 +68,22 @@
 .prosImageContainer {
   height: 650px;
 }
-@media only screen and (max-width: 1024px) {
-  .prosImageContainer {
-    height: 400px;
-  }
-}
 
 .arrow {
   width: 15px;
+}
+.navArrow {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.divider {
+  height: 2px;
+  background-color: lightgray;
+  width: 98%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .roundedDiv {
   border: 2px solid transparent;
@@ -93,23 +107,88 @@
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 1.25;
-  font-size: 2rem;
-  margin-bottom:15px;
+
+  margin-bottom: 15px;
 }
 
 .faqTextFont {
   font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 1;
+}
+
+.arrowFaq {
+  width: 25px;
+  height: 25px;
+}
+
+.socialIconContainer {
+  padding-top: 25px;
+  margin-left: 15px;
+}
+
+.navTitle {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
   font-size: 1.5rem;
-  margin-left:15px;
+  margin-left: 20px;
 }
 
-.arrowFaq{
-    width:25px;
-    height:25px;
+.burgerStyles > button {
+  padding: 0 !important;
+}
+@media only screen and (max-width: 1024px) {
+  .prosImageContainer {
+    height: 400px;
+  }
+  .navTitle {
+    margin-left: unset;
+  }
 }
 
-.socialIconContainer{
-    padding-top:25px;
-    margin-left:15px;
+/* hover animation underline */
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 0 100%;
+}
+
+.countryIcon {
+  width: 25px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+.loginIcon {
+  width: 25px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+.usContainer {
+  width: 100%;
+  top: 33px;
+  background: #f5ebeb;
+  padding: 5px 0px 5px 4px;
+  border-radius: 5px;
+}
+
+.smileLogo{
+  margin-top:30px;
+  margin-bottom:30px;
 }
