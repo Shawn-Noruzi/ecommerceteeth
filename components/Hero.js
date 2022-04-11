@@ -37,7 +37,7 @@ export default function Hero({ products, professionals, faq }) {
       <div className=" mx-auto max-w-screen-2xl relative  text-center">
         <div className="text-center w-4/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 lg:top-1/3 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
           <h1 className="faqTitle mb-2 text-white text-3xl md:text-5xl ">
-          Frequently Asked Questions
+            Frequently Asked Questions
           </h1>
           {/* <h2 className="header2Font mb-3 text-white">
             Professional Products <br />
@@ -59,12 +59,16 @@ export default function Hero({ products, professionals, faq }) {
             15 seconds to brighter teeth.
           </h2>
           <div className=" flex items-center flex-col lg:items-baseline lg:flex-row mb-3">
-            <button className="border-2 max-w-sm mb-3 mt-3 border-white bg-white transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto">
-              Shop Our Products
-            </button>
-            <button className="border-2 max-w-sm border-white transition-all hover:-translate-y-1  text-white font-bold py-4 px-6 rounded-full w-full lg:w-auto">
-              About Us
-            </button>
+            <a href="/products">
+              <button className="border-2 max-w-sm mb-3 mt-3 border-white bg-white transition-all hover:-translate-y-1  font-bold py-4 px-6 rounded-full mr-3 w-full lg:w-auto">
+                Shop Our Products
+              </button>
+            </a>
+            <a href="/faq">
+              <button className="border-2 max-w-sm border-white transition-all hover:-translate-y-1  text-white font-bold py-4 px-6 rounded-full w-full lg:w-auto">
+                About Us
+              </button>
+            </a>
           </div>
         </div>
         <div className="w-full h-full ">
@@ -72,7 +76,6 @@ export default function Hero({ products, professionals, faq }) {
             muted
             autoPlay
             loop="loop"
-            dataAutoplay=""
             src="https://cdn.shopify.com/s/files/1/0567/3366/3255/files/teethv.mp4?v=1647445986"
             height="720"
             width="1620"
