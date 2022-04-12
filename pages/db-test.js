@@ -3,7 +3,7 @@ import prisma from "../lib/prisma.ts";
 //prisma.user.create() to make new user for sign up
 //prisma.user.findMany() to get all users from user table
 export default function Database({ professionals }) {
-  console.log("pros", professionals);
+
   return (
     <div className="flex flex-col">
       {professionals.map((x) => (

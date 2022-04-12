@@ -20,3 +20,4 @@ npx prisma db push
 //run prisma studio to see db content 
 
 npx prisma studio
+
