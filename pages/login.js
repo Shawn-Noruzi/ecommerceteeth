@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 export default function Login() {
   const [isEmpty, setIsEmpty] = useState(false);
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const { register, errors, handleSubmit, watch } = useForm({});
+  const password = useRef({});
+  const onSubmit = async data => {
     alert(JSON.stringify(data));
   };
   return (
@@ -23,6 +24,7 @@ export default function Login() {
           </h3>
           {/* form input */}
           <form onSubmit={handleSubmit(onSubmit)}>
+            {/* email */}
             <div className="mt-4">
               <div>
                 <label className="block" htmlFor="email">
@@ -30,7 +32,9 @@ export default function Login() {
                 </label>
                 <input
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  {...register("email")}
+                  {...register("email",  {
+                    required: 'email_error'
+                  })}
                   placeholder="bluebill1049@hotmail.com"
                   type="email"
                 />
@@ -38,11 +42,15 @@ export default function Login() {
                   Email field is required{" "}
                 </span>
               </div>
+
+              {/* password */}
               <div className="mt-4">
                 <label className="block">Password</label>
                 <input
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  {...register("password")}
+                  {...register("password", {
+                    required: 'password_error'
+                  })}
                   type="password"
                   placeholder="Password"
                 />

@@ -14,5 +14,9 @@ npm run dev
 
 
 // db commands for the schema.prisma file
+//updates to schema? run
 npx prisma db push
 
+//run prisma studio to see db content 
+
+npx prisma studio

@@ -24,5 +24,9 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   posts         Post[]
+  isProfessional  Boolean @default(false)
+  isAdmin  Boolean @default(false)
+  isAuthenticated Boolean @default(false)
+  
   @@map(name: "users")
 }
