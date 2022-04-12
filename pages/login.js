@@ -8,6 +8,7 @@ export default function Login() {
   const onSubmit = async data => {
     alert(JSON.stringify(data));
   };
+  // https://codesandbox.io/s/react-hook-form-password-match-check-standard-validation-eo6en?file=/src/index.js:294-366
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100">
