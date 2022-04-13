@@ -1,7 +1,4 @@
 import prisma from "../lib/prisma.ts";
-
-//prisma.user.create() to make new user for sign up
-//prisma.user.findMany() to get all users from user table
 export default function Database({ professionals }) {
 
   return (
@@ -19,24 +16,11 @@ export default function Database({ professionals }) {
   );
 }
 
-// export const getStaticProps = async () => {
-//     const feed = await prisma.post.findMany({
-//       where: { published: true },
-//       include: {
-//         author: {
-//           select: { name: true },
-//         },
-//       },
-//     });
-//     return { props: { feed } };
-//   };
 
 //professional users only get
 export const getStaticProps = async () => {
-  let professionals = await prisma.user.findMany({
-    where: { isProfessional: true },
-  });
-
+  let professionals =  await prisma.user.findMany()
+ 
   professionals.map((x) => {
     x.createdAt = Math.floor(x.createdAt / 1000);
     x.updatedAt = Math.floor(x.createdAt / 1000);

@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { userService } from 'services/user.service';
 export default function Login({ users }) {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const onSubmit = data => {
-
-    console.log(data)
+  const onSubmit = userData => {
+    return userService.login(userData)
+      .then(() => {
+        console.log("Registration Success", userData)
+        // router.push('login');
+      })
+      .catch(err => console.log("error", err));
   };
- 
- 
+
+
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100">
@@ -90,13 +95,13 @@ export default function Login({ users }) {
 
 
 export const getStaticProps = async () => {
-  const users = await prisma.user.findMany()
-  console.log("users", users)
-  users.map((x) => {
-    x.createdAt = Math.floor(x.createdAt / 1000);
-    x.updatedAt = Math.floor(x.createdAt / 1000);
-    return x;
-  });
+  // const users = await prisma.user.findMany()
+  // console.log("users", users)
+  // users.map((x) => {
+  //   x.createdAt = Math.floor(x.createdAt / 1000);
+  //   x.updatedAt = Math.floor(x.createdAt / 1000);
+  //   return x;
+  // });
 
-  return { props: { users } };
+  return { props: {  noLayout: true }, };
 };

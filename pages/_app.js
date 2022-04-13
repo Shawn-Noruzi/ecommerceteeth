@@ -6,21 +6,24 @@ import "swiper/components/pagination/pagination.scss";
 import Layout from "../components/Layout";
 import ShopProvider from "../context/shopContext";
 import { useRouter } from "next/router";
-
+import { SessionProvider } from 'next-auth/react';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
-    <ShopProvider>
-      {pageProps.noLayout ? (
-        <Component {...pageProps} key={router.asPath} />
-      ) : (
-        <Layout>
-          {" "}
+
+    <SessionProvider session={pageProps.session}>
+      <ShopProvider>
+        {pageProps.noLayout ? (
           <Component {...pageProps} key={router.asPath} />
-        </Layout>
-      )}
-    </ShopProvider>
+        ) : (
+          <Layout>
+            <Component {...pageProps} key={router.asPath} />
+          </Layout>
+        )}
+      </ShopProvider>
+    </SessionProvider>
+
   );
 }
 
