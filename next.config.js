@@ -7,12 +7,6 @@ module.exports = {
     domains: ["cdn.shopify.com"],
   },
   reactStrictMode: true,
-  serverRuntimeConfig: {
-      secret: 'SUPER SECRET STRING OF EMMA BRIGHTSMILE SECRET 1993 SHAYAN NORUZI'
-  },
-  publicRuntimeConfig: {
-      apiUrl: process.env.NODE_ENV === 'development'
-          ? 'http://localhost:3000/api' // development api
-          : 'http://localhost:3000/api' // production api
-  }
+
+
 };
