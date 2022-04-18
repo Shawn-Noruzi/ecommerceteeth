@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { userService } from 'services/user.service';
+import { useSession, signIn, signOut } from "next-auth/react";
 export default function Login({ users }) {
   const [isEmpty, setIsEmpty] = useState(false);
-
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
-  const onSubmit = userData => {
-    return userService.login(userData)
+  const { data: session } = useSession();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  console.log("session", session);
+  const onSubmit = (userData) => {
+    return userService
+      .login(userData)
       .then(() => {
-        console.log("Registration Success", userData)
+        console.log("Registration Success", userData);
         // router.push('login');
       })
-      .catch(err => console.log("error", err));
+      .catch((err) => console.log("error", err));
   };
-
 
   return (
     <div className="flex">
@@ -41,15 +46,16 @@ export default function Login({ users }) {
                 <input
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                   {...register("email", {
-                    required: true
+                    required: true,
                   })}
                   placeholder="bluebill1049@hotmail.com"
                   type="email"
                 />
-                {errors.email && <span className="text-xs tracking-wide text-red-600">
-                  Email field is required
-                </span>}
-
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Email field is required
+                  </span>
+                )}
               </div>
 
               {/* password */}
@@ -59,17 +65,20 @@ export default function Login({ users }) {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                   {...register("password", {
                     required: true,
-
                   })}
                   type="password"
                   placeholder="Password"
                 />
-                {errors.email && <span className="text-xs tracking-wide text-red-600">
-                  Password field is required
-                </span>}
-                {errors.email && <span className="text-xs tracking-wide text-red-600">
-                  Password field is required
-                </span>}
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Password field is required
+                  </span>
+                )}
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Password field is required
+                  </span>
+                )}
               </div>
               <div className="flex items-baseline justify-between">
                 <input
@@ -83,6 +92,7 @@ export default function Login({ users }) {
                   Forgot password?
                 </a>
               </div>
+              <button onClick={() => signIn()}>Sign in</button>
             </div>
           </form>
         </div>
@@ -91,8 +101,6 @@ export default function Login({ users }) {
     </div>
   );
 }
-
-
 
 export const getStaticProps = async () => {
   // const users = await prisma.user.findMany()
@@ -103,5 +111,5 @@ export const getStaticProps = async () => {
   //   return x;
   // });
 
-  return { props: {  noLayout: true }, };
+  return { props: { noLayout: true } };
 };
