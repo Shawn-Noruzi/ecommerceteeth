@@ -23,8 +23,8 @@ export default function Login({ users }) {
 
   return (
     <div className="flex">
-      <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="px-8 py-6  text-left bg-white shadow-lg w-96">
+      <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100 my-3">
+        <div className="px-8 py-6  text-left bg-white shadow-lg w-96 h-full ">
           <div className="flex justify-center">
             <img
               src="/apple-touch-icon.png"
@@ -92,7 +92,7 @@ export default function Login({ users }) {
                   Forgot password?
                 </a>
               </div>
-              <button onClick={() => signIn()}>Sign in</button>
+              <button className="items-center w-full flex justify-center px-3 py-4 mt-4 border-solid border-2 rounded-md" onClick={() => signIn("google", { callbackUrl: 'http://localhost:3000/' })}><img alt="google icon" src="/Assets/googleIcon.png" className="w-7 mx-3"/> Sign in with Google</button>
             </div>
           </form>
         </div>
