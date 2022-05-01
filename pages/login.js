@@ -1,16 +1,30 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-export default function Login() {
+import { useSession, signIn, signOut } from "next-auth/react";
+export default function Login({ users }) {
   const [isEmpty, setIsEmpty] = useState(false);
-
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const { data: session } = useSession();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  console.log("session", session);
+  const onSubmit = (userData) => {
+    return userService
+      .login(userData)
+      .then(() => {
+        console.log("Registration Success", userData);
+        // router.push('login');
+      })
+      .catch((err) => console.log("error", err));
   };
+
   return (
     <div className="flex">
-      <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="px-8 py-6  text-left bg-white shadow-lg">
+      <div className="w-full md:w-1/2 flex items-center justify-center min-h-screen bg-gray-100 my-3">
+        <div className="px-8 py-6  text-left bg-white shadow-lg w-96 h-full ">
           <div className="flex justify-center">
             <img
               src="/apple-touch-icon.png"
@@ -23,34 +37,54 @@ export default function Login() {
           </h3>
           {/* form input */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mt-4">
+            {/* email */}
+            <div className="mt-4 h-64">
               <div>
                 <label className="block" htmlFor="email">
                   Email
                 </label>
                 <input
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  {...register("email")}
+                  {...register("email", {
+                    required: true,
+                  })}
                   placeholder="bluebill1049@hotmail.com"
                   type="email"
                 />
-                <span className="text-xs tracking-wide text-red-600">
-                  Email field is required{" "}
-                </span>
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Email field is required
+                  </span>
+                )}
               </div>
+
+              {/* password */}
               <div className="mt-4">
                 <label className="block">Password</label>
                 <input
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  {...register("password")}
+                  {...register("password", {
+                    required: true,
+                  })}
                   type="password"
                   placeholder="Password"
                 />
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Password field is required
+                  </span>
+                )}
+                {errors.email && (
+                  <span className="text-xs tracking-wide text-red-600">
+                    Password field is required
+                  </span>
+                )}
               </div>
               <div className="flex items-baseline justify-between">
                 <input
                   type="submit"
                   placeholder="Login"
+                  value="Login"
                   className="px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
                 />
 
@@ -58,6 +92,7 @@ export default function Login() {
                   Forgot password?
                 </a>
               </div>
+              <button className="items-center w-full flex justify-center px-3 py-4 mt-4 border-solid border-2 rounded-md" onClick={() => signIn("google", { callbackUrl: 'http://localhost:3000/' })}><img alt="google icon" src="/Assets/googleIcon.png" className="w-7 mx-3"/> Sign in with Google</button>
             </div>
           </form>
         </div>
@@ -67,8 +102,14 @@ export default function Login() {
   );
 }
 
-export async function getStaticProps(context) {
-  return {
-    props: { noLayout: true },
-  };
-}
+export const getStaticProps = async () => {
+  // const users = await prisma.user.findMany()
+  // console.log("users", users)
+  // users.map((x) => {
+  //   x.createdAt = Math.floor(x.createdAt / 1000);
+  //   x.updatedAt = Math.floor(x.createdAt / 1000);
+  //   return x;
+  // });
+
+  return { props: { noLayout: true } };
+};

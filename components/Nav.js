@@ -9,7 +9,7 @@ export default function Nav({ size }) {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleCountry, setToggleCountry] = useState(false);
-  console.log("togggle", toggleCountry);
+
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
@@ -60,9 +60,8 @@ export default function Nav({ size }) {
             </p>
             <a
               href="https://www.beautifulbrightsmile.com"
-              className={`absolute usContainer flex  ${
-                toggleCountry ? "opacity-100 z-50" : "-z-100 opacity-0"
-              }`}
+              className={`absolute usContainer flex  ${toggleCountry ? "opacity-100 z-50" : "-z-100 opacity-0"
+                }`}
             >
               <img
                 alt="canada country icon"
@@ -136,11 +135,10 @@ export default function Nav({ size }) {
         </div>
       </header>
       <div
-        className={`absolute  w-1/2 left-0  bg-white transition-all duration-300 ease-in-out h-screen flex flex-col px-4 pt-10 ${
-          toggleButton && size.width < 1025
+        className={`absolute  w-1/2 left-0  bg-white transition-all duration-300 ease-in-out h-screen flex flex-col px-4 pt-10 ${toggleButton && size.width < 1025
             ? " translate-x-0"
             : "-translate-x-full"
-        }`}
+          }`}
       >
         <Link href="/">
           <div className="flex justify-between">
