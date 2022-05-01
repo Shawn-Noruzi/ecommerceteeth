@@ -40,6 +40,8 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  admin Boolean?
+  professional Boolean?
   accounts      Account[]
   sessions      Session[]
 }
