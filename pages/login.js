@@ -58,41 +58,22 @@ export default function Login({ users }) {
                 )}
               </div>
 
-              {/* password */}
-              <div className="mt-4">
-                <label className="block">Password</label>
-                <input
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  {...register("password", {
-                    required: true,
-                  })}
-                  type="password"
-                  placeholder="Password"
-                />
-                {errors.email && (
-                  <span className="text-xs tracking-wide text-red-600">
-                    Password field is required
-                  </span>
-                )}
-                {errors.email && (
-                  <span className="text-xs tracking-wide text-red-600">
-                    Password field is required
-                  </span>
-                )}
-              </div>
               <div className="flex items-baseline justify-between">
-                <input
-                  type="submit"
-                  placeholder="Login"
-                  value="Login"
-                  className="px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
-                />
-
-                <a href="#" className="text-sm text-blue-600 hover:underline">
-                  Forgot password?
-                </a>
+                <button onClick={() => signIn()}>Sign in</button>
               </div>
-              <button className="items-center w-full flex justify-center px-3 py-4 mt-4 border-solid border-2 rounded-md" onClick={() => signIn("google", { callbackUrl: 'http://localhost:3000/' })}><img alt="google icon" src="/Assets/googleIcon.png" className="w-7 mx-3"/> Sign in with Google</button>
+              <button
+                className="items-center w-full flex justify-center px-3 py-4 mt-4 border-solid border-2 rounded-md"
+                onClick={() =>
+                  signIn("google", { callbackUrl: "http://localhost:3000/" })
+                }
+              >
+                <img
+                  alt="google icon"
+                  src="/Assets/googleIcon.png"
+                  className="w-7 mx-3"
+                />{" "}
+                Sign in with Google
+              </button>
             </div>
           </form>
         </div>
