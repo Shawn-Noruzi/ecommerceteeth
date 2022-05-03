@@ -5,37 +5,45 @@ import MiniCart from "./MiniCart";
 import Image from "next/image";
 import { HamburgerElastic } from "react-animated-burgers";
 
-export default function Nav({ size }) {
+export default function Nav({ size, session }) {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleCountry, setToggleCountry] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
+  const wrapperRef = useRef();
+  const wrapperRefProfile = useRef();
+  const wrapperRefProfileMenu = useRef();
 
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
   });
 
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setToggleCountry(false);
-        }
-      }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
+  const handleClickOutside = (e) => {
+    if (!wrapperRef.current.contains(e.target)) {
+      setToggleCountry(false);
+    }
+    if (
+      !wrapperRefProfile.current.contains(e.target) &&
+      !wrapperRefProfileMenu.current.contains(e.target)
+    ) {
+      console.log("handleClickProfile outside click");
+      setOpenProfile(false);
+    }
+  };
 
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  const handleClickInsideCountry = () =>
+    setToggleCountry((prevState) => !prevState);
+  const handleClickInsideProfile = () => {
+    console.log("handleClickProfile");
+    setOpenProfile((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  });
+
   return (
     <div className="relative">
       <div className="width-full bg-black text-center pb-2 pt-2">
@@ -44,9 +52,9 @@ export default function Nav({ size }) {
         </p>
       </div>
       <div className=" width-full bg-gray-200">
-        <div className="relative text-center flex items-center justify-between max-w-6xl pt-2 pb-2 px-1 sm:px-4 mx-auto lg:max-w-screen-2xl ">
+        <div className="relative z-50 text-center flex items-center justify-between max-w-6xl pt-2 pb-2 px-1 sm:px-4 mx-auto lg:max-w-screen-2xl ">
           <div
-            onClick={() => setToggleCountry((prevState) => !prevState)}
+            onClick={handleClickInsideCountry}
             className=" ml-1 lg:ml-5 flex items-center cursor-pointer relative w-24"
             ref={wrapperRef}
           >
@@ -60,8 +68,9 @@ export default function Nav({ size }) {
             </p>
             <a
               href="https://www.beautifulbrightsmile.com"
-              className={`absolute usContainer flex  ${toggleCountry ? "opacity-100 z-50" : "-z-100 opacity-0"
-                }`}
+              className={`absolute usContainer flex  ${
+                toggleCountry ? "opacity-100 z-50" : "-z-100 opacity-0"
+              }`}
             >
               <img
                 alt="canada country icon"
@@ -74,14 +83,63 @@ export default function Nav({ size }) {
             </a>
           </div>
 
-          <a href="/login" className=" mr-1 lg:mr-5 flex items-center transition-all opacity-75 hover:opacity-100 cursor-pointer">
-            <img
-              alt="login icon"
-              src="/Assets/login.png"
-              className="loginIcon"
-            />
-            <p className="text-black text-sm font-medium">Login</p>
-          </a>
+          {session ? (
+            <>
+              <div
+                onClick={handleClickInsideProfile}
+                ref={wrapperRefProfile}
+                className=" mr-1 lg:mr-5 flex items-center transition-all opacity-75 hover:opacity-100 cursor-pointer"
+              >
+                <img
+                  alt="login icon"
+                  src="/Assets/login.png"
+                  className="loginIcon"
+                />
+                <img
+                  alt="login arrow down"
+                  src="/Assets/home/arrow.png"
+                  className="arrowDown"
+                />
+
+                {/* Drop down profile */}
+              </div>
+              <div
+                ref={wrapperRefProfileMenu}
+                className={`absolute profileContainer flex flex-col items-start  ${
+                  openProfile ? "opacity-100 z-50 h-auto p-4" : "-z-100 opacity-0 h-0 p-0"
+                }`}
+              >
+                <div className="flex">
+                  <img
+                    alt="login icon"
+                    src="/Assets/login.png"
+                    className="loginIcon"
+                  />
+                  <p>{session?.user?.email}</p>
+                </div>
+
+                <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mt-6 mb-4">
+                  Admin
+                </p>
+                <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mb-2">
+                  Sign Out
+                </p>
+              </div>
+            </>
+          ) : (
+            <a
+              href="/login"
+              className=" mr-1 lg:mr-5 flex items-center transition-all opacity-75 hover:opacity-100 cursor-pointer"
+            >
+              <img
+                alt="login icon"
+                src="/Assets/login.png"
+                className="loginIcon"
+              />
+
+              <p className="text-black text-sm font-medium">Login</p>
+            </a>
+          )}
         </div>
       </div>
 
@@ -135,10 +193,11 @@ export default function Nav({ size }) {
         </div>
       </header>
       <div
-        className={`absolute  w-1/2 left-0  bg-white transition-all duration-300 ease-in-out h-screen flex flex-col px-4 pt-10 ${toggleButton && size.width < 1025
+        className={`absolute  w-1/2 left-0  bg-white transition-all duration-300 ease-in-out h-screen flex flex-col px-4 pt-10 ${
+          toggleButton && size.width < 1025
             ? " translate-x-0"
             : "-translate-x-full"
-          }`}
+        }`}
       >
         <Link href="/">
           <div className="flex justify-between">

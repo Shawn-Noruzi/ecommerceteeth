@@ -3,6 +3,8 @@
   width: 100%;
   object-fit: cover;
   filter: brightness(0.7);
+  position: relative;
+    z-index: -1;
 }
 
 .header1Font {
@@ -174,6 +176,11 @@
   margin-right: 5px;
 }
 
+/* nav */
+.arrowDown {
+  width: 15px;
+  transform: rotate(90deg);
+}
 .loginIcon {
   width: 25px;
   object-fit: cover;
@@ -188,7 +195,17 @@
   border-radius: 5px;
 }
 
-.smileLogo{
-  margin-top:30px;
-  margin-bottom:30px;
+.profileContainer {
+  width: fit-content;
+  top: 41px;
+  right: 16px;
+  background: #ffffff;
+
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.smileLogo {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
