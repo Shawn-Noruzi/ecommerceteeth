@@ -4,8 +4,8 @@ import { CartContext } from "../context/shopContext";
 import MiniCart from "./MiniCart";
 import Image from "next/image";
 import { HamburgerElastic } from "react-animated-burgers";
-
-export default function Nav({ size, session }) {
+import { signOut } from "next-auth/react";
+export default function Nav({ size, session, openModal }) {
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleCountry, setToggleCountry] = useState(false);
@@ -20,12 +20,12 @@ export default function Nav({ size, session }) {
   });
 
   const handleClickOutside = (e) => {
-    if (!wrapperRef.current.contains(e.target)) {
+    if (!wrapperRef?.current?.contains(e.target)) {
       setToggleCountry(false);
     }
     if (
-      !wrapperRefProfile.current.contains(e.target) &&
-      !wrapperRefProfileMenu.current.contains(e.target)
+      !wrapperRefProfile?.current?.contains(e.target) &&
+      !wrapperRefProfileMenu?.current?.contains(e.target)
     ) {
       console.log("handleClickProfile outside click");
       setOpenProfile(false);
@@ -106,7 +106,9 @@ export default function Nav({ size, session }) {
               <div
                 ref={wrapperRefProfileMenu}
                 className={`absolute profileContainer flex flex-col items-start  ${
-                  openProfile ? "opacity-100 z-50 h-auto p-4" : "-z-100 opacity-0 h-0 p-0"
+                  openProfile
+                    ? "opacity-100 z-50 h-auto p-4"
+                    : "-z-100 opacity-0 h-0 p-0"
                 }`}
               >
                 <div className="flex">
@@ -121,14 +123,17 @@ export default function Nav({ size, session }) {
                 <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mt-6 mb-4">
                   Admin
                 </p>
-                <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mb-2">
+                <button
+                  onClick={() => signOut()}
+                  className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mb-2"
+                >
                   Sign Out
-                </p>
+                </button>
               </div>
             </>
           ) : (
-            <a
-              href="/login"
+            <button
+              onClick={openModal}
               className=" mr-1 lg:mr-5 flex items-center transition-all opacity-75 hover:opacity-100 cursor-pointer"
             >
               <img
@@ -138,7 +143,7 @@ export default function Nav({ size, session }) {
               />
 
               <p className="text-black text-sm font-medium">Login</p>
-            </a>
+            </button>
           )}
         </div>
       </div>
