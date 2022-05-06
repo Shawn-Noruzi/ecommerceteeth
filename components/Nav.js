@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { useContext, useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import { CartContext } from "../context/shopContext";
 import MiniCart from "./MiniCart";
 import Image from "next/image";
 import { HamburgerElastic } from "react-animated-burgers";
 import { signOut } from "next-auth/react";
-export default function Nav({ size, session, openModal }) {
+export default function Nav({
+  size,
+  session,
+  openModal,
+  setProfessionalsHistory,
+  openModalPro,
+}) {
+  const router = useRouter();
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
   const [toggleButton, setToggleButton] = useState(false);
   const [toggleCountry, setToggleCountry] = useState(false);
@@ -13,7 +21,7 @@ export default function Nav({ size, session, openModal }) {
   const wrapperRef = useRef();
   const wrapperRefProfile = useRef();
   const wrapperRefProfileMenu = useRef();
-
+  console.log("session", session);
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
@@ -39,6 +47,22 @@ export default function Nav({ size, session, openModal }) {
     setOpenProfile((prevState) => !prevState);
   };
 
+  const handleLinkClick = (location) => {
+    if (location === "/professionals" && !session) {
+      //open modal with pro route history
+      console.log("opening modal");
+      setProfessionalsHistory(true);
+      openModal();
+    } else {
+      if (session?.user?.isPro) {
+        router.push("/professionals");
+      } else {
+        openModalPro();
+      }
+    }
+  };
+
+  console.log("session.user", session?.user);
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
@@ -66,21 +90,22 @@ export default function Nav({ size, session, openModal }) {
             <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100">
               Canada
             </p>
-            <a
-              href="https://www.beautifulbrightsmile.com"
-              className={`absolute usContainer flex  ${
-                toggleCountry ? "opacity-100 z-50" : "-z-100 opacity-0"
+            {toggleCountry ? (
+              <a
+                href="https://www.beautifulbrightsmile.com"
+                className={`absolute usContainer flex opacity-100 z-10" 
               }`}
-            >
-              <img
-                alt="canada country icon"
-                src="/Assets/us.png"
-                className="countryIcon transition-all hover:opacity-100"
-              />
-              <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100">
-                America
-              </p>
-            </a>
+              >
+                <img
+                  alt="canada country icon"
+                  src="/Assets/us.png"
+                  className="countryIcon transition-all hover:opacity-100"
+                />
+                <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100">
+                  America
+                </p>
+              </a>
+            ) : null}
           </div>
 
           {session ? (
@@ -165,12 +190,21 @@ export default function Nav({ size, session, openModal }) {
               </span>
             </a>
           </Link>
-          <div className=" items-center justify-between hidden lg:flex -ml-36 w-80">
-            <Link href="/professionals">
-              <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
-                Professionals{" "}
-              </a>
-            </Link>
+          <div
+            className={
+              "items-center hidden lg:flex -ml-36 w-80 " +
+              (session?.user?.professional
+                ? "justify-evenly"
+                : "justify-between")
+            }
+          >
+            <a
+              onClick={() => handleLinkClick("/professionals")}
+              className="text-lg font-medium text-gray-900 link-underline link-underline-black cursor-pointer"
+            >
+              Professionals{" "}
+            </a>
+
             <Link href="/products">
               <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
                 Products{" "}

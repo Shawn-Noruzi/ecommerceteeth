@@ -4,10 +4,11 @@ import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../../lib/prisma.ts";
 import EmailProvider from "next-auth/providers/email";
 import nodemailer from "nodemailer";
-import Handlebars from 'handlebars';
-import { readFileSync } from 'fs';
-import path from 'path';
-const emailsDir = path.resolve(process.cwd(), 'emails');
+import Handlebars from "handlebars";
+import { readFileSync } from "fs";
+import path from "path";
+
+const emailsDir = path.resolve(process.cwd(), "emails");
 const authHandler = (req, res) => NextAuth(req, res, options);
 export default authHandler;
 
@@ -38,7 +39,12 @@ function html({ url, host, email }) {
     </tr>
   </table>
   <table width="100%" border="0" cellspacing="20" cellpadding="0" style="background: ${mainBackgroundColor}; max-width: 600px; margin: auto; border-radius: 10px;">
-    <tr>
+  <tr>
+  <td align="center" style="padding: 10px 0px 0px 0px; font-size: 24px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
+    <strong>Beautiful Bright Smile</strong>
+  </td>
+</tr> 
+  <tr>
       <td align="center" style="padding: 10px 0px 0px 0px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
         Sign in as <strong>${escapedEmail}</strong>
       </td>
@@ -67,7 +73,6 @@ function text({ url, host }) {
   return `Sign in to ${host}\n${url}\n\n`;
 }
 
-
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_SERVER_HOST,
   port: process.env.EMAIL_SERVER_PORT,
@@ -82,25 +87,43 @@ const sendWelcomeEmail = async ({ user }) => {
   const { email } = user;
 
   try {
-    const emailFile = readFileSync(path.join(emailsDir, 'welcome.html'), {
-      encoding: 'utf8',
+    const emailFile = readFileSync(path.join(emailsDir, "welcome.html"), {
+      encoding: "utf8",
     });
     const emailTemplate = Handlebars.compile(emailFile);
     await transporter.sendMail({
       from: `"✨ SupaVacation" ${process.env.EMAIL_FROM}`,
       to: email,
-      subject: 'Welcome to SupaVacation! 🎉',
+      subject: "Welcome to SupaVacation! 🎉",
       html: emailTemplate({
         base_url: process.env.NEXTAUTH_URL,
-        support_email: 'support@themodern.dev',
+        support_email: "support@themodern.dev",
       }),
     });
   } catch (error) {
     console.log(`❌ Unable to send welcome email to user (${email})`);
-    console.log("err",error)
+    console.log("err", error);
   }
 };
 const options = {
+  callbacks: {
+    session: async (session) => {
+      if (!session) return;
+
+      const user = await prisma.user.findUnique({
+        where: {
+          email: session.user.email,
+        },
+      });
+      return {
+        user: {
+          isAdmin: user.admin,
+          isPro: user.professional,
+          email: user.email,
+        },
+      };
+    },
+  },
   pages: {
     signIn: "/",
     signOut: "/",

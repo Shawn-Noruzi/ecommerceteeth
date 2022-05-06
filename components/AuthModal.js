@@ -62,7 +62,7 @@ const Confirm = ({ show = false, email = '' }) => (
   </Transition>
 );
 
-const AuthModal = ({ show = false, onClose = () => null }) => {
+const AuthModal = ({ show = false, onClose = () => null, professionalsHistory }) => {
   const [disabled, setDisabled] = useState(false);
   const [showConfirm, setConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
@@ -75,7 +75,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
       // Perform sign in
       const { error } = await signIn('email', {
         redirect: false,
-        callbackUrl: window.location.href,
+        callbackUrl: professionalsHistory ? "/professionals" : window.location.href,
         email,
       });
       // Something went wrong
@@ -96,7 +96,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
     setDisabled(true);
     // Perform sign in
     signIn('google', {
-      callbackUrl: window.location.href,
+      callbackUrl: professionalsHistory ? "/professionals" : window.location.href ,
     });
   };
 

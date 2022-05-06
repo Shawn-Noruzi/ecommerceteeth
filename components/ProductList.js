@@ -1,9 +1,7 @@
 import ProductCard from "./ProductCard";
 
 const ProductList = ({ products, productPage, productCategory }) => {''
-  console.log("products[0].node",products[0].node.tags);
 
-  console.log("productCategory", productCategory);
   return (
     <div className="bg-white">
       <div
