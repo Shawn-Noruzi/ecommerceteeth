@@ -193,7 +193,7 @@ const AuthModal = ({ show = false, onClose = () => null, professionalsHistory })
 
                   {!showSignIn ? (
                     <Dialog.Description className="mt-2 text-gray-500 text-base text-center">
-                     {professionalsHistory ? "Please Login/Signup to gain access to our professional products catalog." : " Please create an account to see additional products and get access to your own Beautiful <br/> Bright Smile dashboard!"}
+                     {professionalsHistory ? "Please Login/Signup to gain access to our professional products catalog." : " Please create an account to see additional products and get access to your own Beautiful Bright Smile dashboard!"}
                     </Dialog.Description>
                   ) : null}
 
