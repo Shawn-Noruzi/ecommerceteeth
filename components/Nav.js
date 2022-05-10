@@ -145,9 +145,12 @@ export default function Nav({
                   <p>{session?.user?.email}</p>
                 </div>
 
-                <p className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mt-6 mb-4">
-                  Admin
-                </p>
+                <a
+                  href={session?.user?.isAdmin ? "/admin" : "/profile"}
+                  className="text-black text-sm font-medium cursor-pointer no-underline transition-all opacity-75 hover:opacity-100 mt-6 mb-4"
+                >
+                  {session?.user?.isAdmin ? "Admin" : "Profile"}
+                </a>
                 <button
                   onClick={() => signOut()}
                   className="text-black text-sm font-medium transition-all opacity-75 hover:opacity-100 mb-2"

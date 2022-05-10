@@ -8,7 +8,7 @@ const ProductCategories = ({ product, setProductCategory }) => {
     setProductCategory(category);
   };
   return (
-    <div className="flex  mt-10  max-w-2xl mx-auto  lg:max-w-7xl ">
+    <div className="flex mt-6  max-w-2xl mx-auto  lg:max-w-7xl ">
       <h2 className="text-lg font-bold underline mr-1">Categories</h2>
       <h2 className="text-lg font-bold mr-4">:</h2>
       <button

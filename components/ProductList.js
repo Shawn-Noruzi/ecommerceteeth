@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ products, productPage, productCategory }) => {''
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50 mt-5">
       <div
         className={
           productPage

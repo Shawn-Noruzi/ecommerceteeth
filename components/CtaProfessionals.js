@@ -78,7 +78,7 @@ const CtaProfessionals = ({ show = false, onClose = () => null }) => {
                     as="h3"
                     className="mt-6 font-bold text-lg sm:text-2xl text-center mb-6"
                   >
-                    Professional Products only avaialble to approved users
+                    Professional Products only available to approved users
                   </Dialog.Title>
 
                   {!showSignIn ? (
