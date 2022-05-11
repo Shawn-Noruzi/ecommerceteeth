@@ -3,17 +3,20 @@ import Link from "next/link";
 export default function Hero({ products, professionals, faq }) {
   if (products) {
     return (
-      <div className=" mx-auto  relative text-center">
-        <div className="text-center pl-10 w-4/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-1/3 lg:text-left lg:left-40 lg:translate-x-0 lg:translate-y-0 z-10 ">
-          <h1 className="header1Font mb-2  text-white ">
-            {professionals ? "Professional Products" : "Limited Time Only Sale"}
-          </h1>
-          <h2 className="header2Font mb-3 text-white">
-            Professional Products <br />
-            For Professionals that have professions.
-          </h2>
+      <div className=" mx-auto  relative">
+        <div className="w-full bg-blue-500 h-96 ">
+          <div className="headerProducts max-w-6xl lg:max-w-screen-2xl mx-auto pl-2 sm:pl-20 pt-28 z-10 flex flex-col">
+            <h1 className="header1Font mb-2  text-white ">
+              {professionals
+                ? "Professional Products"
+                : "Limited Time Only Sale"}
+            </h1>
+            <h2 className="header2Font mb-3 text-white">
+              Professional Products <br />
+              For Professionals that have professions.
+            </h2>
+          </div>
         </div>
-        <div className="w-full bg-blue-500 h-96 "></div>
 
         {/* <h1 className="font-extrabold text-gray-900">
         <p className="text-xl sm:text-3xl md:text-4xl">Shopify + Next.js + Tailwind:</p>

@@ -1,9 +1,10 @@
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ products, productPage, productCategory }) => {''
-
+const ProductList = ({ products, productPage, productCategory }) => {
+  "";
+  console.log("productCategory is : ", productCategory);
   return (
-    <div className="bg-gray-50 mt-5">
+    <div className="bg-gray-50">
       <div
         className={
           productPage
@@ -31,11 +32,33 @@ const ProductList = ({ products, productPage, productCategory }) => {''
 
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {productCategory
-            ? products
-                .filter((item) => item?.node?.tags.includes(productCategory) )
-                .map((product) => (
+            ? productCategory === "low"
+              ? [...products]
+                  .sort((a, b) => {
+                    return a > b ? 1 : -1;
+                  })
+                  .map((product) => {
+                    console.log("product is : ", product);
+                    return (
+                      <ProductCard key={product.node.id} product={product} />
+                    );
+                  })
+              : productCategory === "high"
+              ? [...products]
+              .sort((a, b) => {
+                return  a > b ? -1 : 1;
+              })
+              .map((product) => {
+                console.log("product is : ", product);
+                return (
                   <ProductCard key={product.node.id} product={product} />
-                ))
+                );
+              })
+              : products
+                  .filter((item) => item?.node?.tags.includes(productCategory))
+                  .map((product) => (
+                    <ProductCard key={product.node.id} product={product} />
+                  ))
             : products.map((product) => (
                 <ProductCard key={product.node.id} product={product} />
               ))}

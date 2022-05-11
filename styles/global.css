@@ -4,15 +4,7 @@
   object-fit: cover;
   filter: brightness(0.7);
   position: relative;
-    z-index: -1;
-}
-
-.header1Font {
-  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-  font-size: 3rem;
+  z-index: -1;
 }
 
 .faqTitle {
@@ -181,6 +173,11 @@
   width: 15px;
   transform: rotate(90deg);
 }
+.arrowDownCategory {
+  width: 10px;
+  transform: rotate(90deg);
+  margin-left: 8px;
+}
 .loginIcon {
   width: 25px;
   object-fit: cover;
@@ -208,4 +205,38 @@
 .smileLogo {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+/* products */
+.header1Font {
+  font-family: Pulp, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-size: 3rem;
+}
+
+.listOptions {
+  position: absolute;
+  background: white;
+  top: 40px;
+  left: 0!important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 10;
+  width: 175px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+/* Slider Price styling */
+.input-range {
+  width: 300px !important;
+}
+.sliderLabelFont {
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }

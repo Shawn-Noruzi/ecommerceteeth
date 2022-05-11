@@ -7,8 +7,9 @@ import Head from "next/head";
 import useWindowSize from "../utils/useWindowSize";
 
 export default function Home({ products }) {
+  console.log("products", products)
   const size = useWindowSize();
-  const [productCategory, setProductCategory] = useState("");
+  const [productCategory, setProductCategory] = useState("New");
   return (
     <div className="">
       <Head>

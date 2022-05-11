@@ -130,7 +130,7 @@ export default function Nav({
               </div>
               <div
                 ref={wrapperRefProfileMenu}
-                className={`absolute profileContainer flex flex-col items-start  ${
+                className={`absolute profileContainer overflow-hidden flex flex-col items-start  ${
                   openProfile
                     ? "opacity-100 z-50 h-auto p-4"
                     : "-z-100 opacity-0 h-0 p-0"
