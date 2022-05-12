@@ -1,8 +1,30 @@
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ products, productPage, productCategory }) => {
-  "";
-  console.log("productCategory is : ", productCategory);
+const ProductList = ({
+  products,
+  productPage,
+  productCategory,
+  priceFilterValues,
+}) => {
+  console.log("productcategory: ", productCategory);
+  console.log(
+    "products after sort",
+    [...products]
+      .filter(
+        (item) =>
+          parseInt(item?.node?.priceRange?.minVariantPrice?.amount) >
+            priceFilterValues.min &&
+          parseInt(item?.node?.priceRange?.minVariantPrice?.amount) <
+            priceFilterValues.max
+      )
+      .sort((a, b) => {
+        return a.node?.priceRange?.minVariantPrice?.amount >
+          b.node?.priceRange?.minVariantPrice?.amount
+          ? 1
+          : -1;
+      })
+  );
+
   return (
     <div className="bg-gray-50">
       <div
@@ -34,8 +56,30 @@ const ProductList = ({ products, productPage, productCategory }) => {
           {productCategory
             ? productCategory === "low"
               ? [...products]
+                  .filter((item) => {
+                    if (priceFilterValues.max === 500) {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min
+                      );
+                    } else {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min &&
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) < priceFilterValues.max
+                      );
+                    }
+                  })
                   .sort((a, b) => {
-                    return a > b ? 1 : -1;
+                    return parseInt(
+                      a.node?.priceRange?.minVariantPrice?.amount
+                    ) > parseInt(b.node?.priceRange?.minVariantPrice?.amount)
+                      ? 1
+                      : -1;
                   })
                   .map((product) => {
                     console.log("product is : ", product);
@@ -45,17 +89,56 @@ const ProductList = ({ products, productPage, productCategory }) => {
                   })
               : productCategory === "high"
               ? [...products]
-              .sort((a, b) => {
-                return  a > b ? -1 : 1;
-              })
-              .map((product) => {
-                console.log("product is : ", product);
-                return (
-                  <ProductCard key={product.node.id} product={product} />
-                );
-              })
-              : products
-                  .filter((item) => item?.node?.tags.includes(productCategory))
+                  .filter((item) => {
+                    if (priceFilterValues.max === 500) {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min
+                      );
+                    } else {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min &&
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) < priceFilterValues.max
+                      );
+                    }
+                  })
+                  .sort((a, b) => {
+                    return parseInt(
+                      a.node?.priceRange?.minVariantPrice?.amount
+                    ) > parseInt(b.node?.priceRange?.minVariantPrice?.amount)
+                      ? -1
+                      : 1;
+                  })
+                  .map((product) => {
+                    console.log("product is : ", product);
+                    return (
+                      <ProductCard key={product.node.id} product={product} />
+                    );
+                  })
+              : [...products]
+                  .filter((item) => {
+                    if (priceFilterValues.max === 500) {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min
+                      );
+                    } else {
+                      return (
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) > priceFilterValues.min &&
+                        parseInt(
+                          item?.node?.priceRange?.minVariantPrice?.amount
+                        ) < priceFilterValues.max
+                      );
+                    }
+                  })
                   .map((product) => (
                     <ProductCard key={product.node.id} product={product} />
                   ))

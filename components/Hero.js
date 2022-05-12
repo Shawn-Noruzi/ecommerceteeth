@@ -4,8 +4,8 @@ export default function Hero({ products, professionals, faq }) {
   if (products) {
     return (
       <div className=" mx-auto  relative">
-        <div className="w-full bg-blue-500 h-96 ">
-          <div className="headerProducts max-w-6xl lg:max-w-screen-2xl mx-auto pl-2 sm:pl-20 pt-28 z-10 flex flex-col">
+        <div className="w-full bg-blue-500 h-64">
+          <div className="headerProducts max-w-6xl lg:max-w-screen-2xl mx-auto pl-2 sm:pl-20 pt-12 z-10 flex flex-col">
             <h1 className="header1Font mb-2  text-white ">
               {professionals
                 ? "Professional Products"

@@ -220,7 +220,7 @@
   position: absolute;
   background: white;
   top: 40px;
-  left: 0!important;
+  left: 0 !important;
   padding-top: 10px;
   padding-bottom: 10px;
   z-index: 10;
@@ -230,7 +230,7 @@
 
 /* Slider Price styling */
 .input-range {
-  width: 300px !important;
+  width: 600px !important;
 }
 .sliderLabelFont {
   --tw-text-opacity: 1;
@@ -239,4 +239,74 @@
   line-height: 1.25rem;
   --tw-bg-opacity: 1;
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+
+.example-thumb {
+  background: rgba(59, 130, 246);
+  border-radius: 20px;
+  height: 15px;
+  width: 15px;
+}
+.example-thumb:hover {
+  background: rgb(0 91 239);
+}
+
+.example-thumb:focus-visible {
+  outline: unset;
+}
+
+.example-track-0 {
+  background: lightgrey;
+  height: 5px;
+  border-radius: 20px;
+  top: 5px;
+}
+
+.example-track-1 {
+  background: rgba(59, 130, 246);
+  height: 5px;
+  border-radius: 20px;
+  top: 5px;
+}
+
+.example-track-2 {
+  background: lightgrey;
+  height: 5px;
+  border-radius: 20px;
+  top: 5px;
+}
+
+.filterIcon {
+  width: 30px;
+  margin-right: 20px;
+  filter: contrast(0.3);
+}
+
+.filterIcon:hover {
+  width: 30px;
+  margin-right: 20px;
+  filter: contrast(1);
+}
+
+@media only screen and (max-width: 640px) {
+  .categoryMargin {
+    margin-left: 10px;
+  }
+  .header1Font {
+    font-size: 2.25rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .headerProducts {
+    padding-top: 1.8rem !important;
+  }
+}
+
+.filterModal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  overflow:hidden;
 }

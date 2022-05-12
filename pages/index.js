@@ -24,7 +24,7 @@ export default function Home({ products }) {
         <meta property="og:site_name" content="Beautiful Bright Smile" />
       </Head>
       <Hero />
-      <ProductList products={products} />
+      <ProductList products={products} homePage />
       <Pros size={size}/>
     </div>
   )
