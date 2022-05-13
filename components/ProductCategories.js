@@ -18,7 +18,7 @@ const ProductCategories = ({
   const [category, setCategory] = useState(sortBy[0]);
   const [labelValues, setLabelValues] = useState({ min: 0, max: 500 });
   setProductCategory(category.id);
-
+  
   return (
     <>
       <div className="headerProducts max-w-6xl lg:max-w-screen-2xl mx-auto pl-2 sm:pl-20 py-5  z-10 flex flex-col">

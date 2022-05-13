@@ -6,24 +6,8 @@ const ProductList = ({
   productCategory,
   priceFilterValues,
 }) => {
-  console.log("productcategory: ", productCategory);
-  console.log(
-    "products after sort",
-    [...products]
-      .filter(
-        (item) =>
-          parseInt(item?.node?.priceRange?.minVariantPrice?.amount) >
-            priceFilterValues.min &&
-          parseInt(item?.node?.priceRange?.minVariantPrice?.amount) <
-            priceFilterValues.max
-      )
-      .sort((a, b) => {
-        return a.node?.priceRange?.minVariantPrice?.amount >
-          b.node?.priceRange?.minVariantPrice?.amount
-          ? 1
-          : -1;
-      })
-  );
+
+
 
   return (
     <div className="bg-gray-50">
