@@ -186,39 +186,42 @@ export default function Nav({
               barColor="black"
             />
           </div>
-          <Link href="/" passHref>
-            <a className="cursor-pointer">
-              <span className="text-lg pt-1 font-bold navTitle">
-                Beautiful Bright Smile
-              </span>
-            </a>
-          </Link>
-          <div
-            className={
-              "items-center hidden lg:flex -ml-36 w-80 " +
-              (session?.user?.professional
-                ? "justify-evenly"
-                : "justify-between")
-            }
-          >
-            <a
-              onClick={() => handleLinkClick("/professionals")}
-              className="text-lg font-medium text-gray-900 link-underline link-underline-black cursor-pointer"
+          <div className="flex">
+            <Link href="/" passHref>
+              <a className="cursor-pointer">
+                <span className="text-lg pt-1 font-bold navTitle">
+                  Beautiful Bright Smile
+                </span>
+              </a>
+            </Link>
+            <div
+              className={
+                "items-center hidden lg:flex w-80 " +
+                (session?.user?.professional
+                  ? "justify-evenly"
+                  : "justify-between")
+              }
             >
-              Professionals{" "}
-            </a>
+              <a
+                onClick={() => handleLinkClick("/professionals")}
+                className="text-lg font-medium text-gray-900 link-underline link-underline-black cursor-pointer"
+              >
+                Professionals{" "}
+              </a>
 
-            <Link href="/products">
-              <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
-                Products{" "}
-              </a>
-            </Link>
-            <Link href="/faq">
-              <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
-                FAQ{" "}
-              </a>
-            </Link>
+              <Link href="/products">
+                <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
+                  Products{" "}
+                </a>
+              </Link>
+              <Link href="/faq">
+                <a className="text-lg font-medium text-gray-900 link-underline link-underline-black">
+                  FAQ{" "}
+                </a>
+              </Link>
+            </div>
           </div>
+
           <a
             className="text-md font-bold cursor-pointer flex items-center mr-1 lg:mr-5"
             onClick={() => setCartOpen(!cartOpen)}
