@@ -1,50 +1,34 @@
 import Image from "next/image";
+import { useState } from "react";
 import ProductForm from "./ProductForm";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
 import RecommendedList from "./RecommendedList";
 
 export default function ProductPageContent({ product }) {
   const images = [];
-
+  
   product.images.edges.map((image, i) => {
-    images.push(
-      <SwiperSlide key={`slide-${i}`}>
-        <Image
-          src={image.node.originalSrc}
-          alt={image.node.altText}
-          layout="fill"
-          objectFit="cover"
-        />
-      </SwiperSlide>
-    );
+    console.log("image", image);
+    images.push({ image: image.node.originalSrc, alt: image.node.altText });
   });
-
-  SwiperCore.use([Navigation, Pagination]);
-
+  const [mainImage, setmainImage] = useState(images[0]);
+  console.log("mainImage", mainImage);
+  console.log("proudct", product);
+  // src={image.node.originalSrc}
+  // alt={image.node.altText}
+  // layout="fill"
+  // objectFit="cover"
   return (
-    <div className="max-w-2xl mx-auto  px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div className=" max-w-6xl pt-4 pb-2 px-1 sm:px-9 mx-auto lg:max-w-screen-2xl">
       <span className="flex mb-6">
-        <a  className="text-sm mr-3" href="/products">{"Products >"}</a> 
+        <a className="text-sm mr-3" href="/products">
+          {"Products >"}
+        </a>
         <h2 className="text-sm">Home Product</h2>
       </span>
 
-      <div className="flex flex-col justify-center items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-4 lg:space-x-8 max-w-6xl w-11/12 mx-auto">
+      <div className="flex flex-col justify-between items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-4 lg:space-x-8 max-w-6xl w-11/12 mx-auto">
         <div className="w-full max-w-md border bg-white rounded-2xl overflow-hidden shadow-lg md:w-1/2">
-          <div className="relative h-96 w-full">
-            <Swiper
-              style={{
-                "--swiper-navigation-color": "#000",
-                "--swiper-pagination-color": "#000",
-              }}
-              navigation
-              pagination={{ clickable: true }}
-              className="h-96 rounded-2xl"
-              loop="true"
-            >
-              {images}
-            </Swiper>
-          </div>
+          <div className="relative h-96 w-full"></div>
         </div>
         <ProductForm product={product} />
       </div>

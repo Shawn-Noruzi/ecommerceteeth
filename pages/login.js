@@ -10,7 +10,7 @@ export default function Login({ users }) {
     watch,
     formState: { errors },
   } = useForm();
-  console.log("session", session);
+
   const onSubmit = (userData) => {
     return userService
       .login(userData)

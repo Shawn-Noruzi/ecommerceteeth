@@ -21,7 +21,7 @@ export default function Nav({
   const wrapperRef = useRef();
   const wrapperRefProfile = useRef();
   const wrapperRefProfileMenu = useRef();
-  console.log("session", session);
+
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
@@ -61,8 +61,8 @@ export default function Nav({
       }
     }
   };
-
-  console.log("session.user", session?.user);
+  // console.log("session", session);
+  // console.log("session.user", session?.user);
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);

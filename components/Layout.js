@@ -12,7 +12,7 @@ export default function Layout({ children }) {
   const { data: session, status } = useSession();
   const user = session?.user;
   const isLoadingUser = status === "loading";
-  console.log("user", user);
+
   const [showModal, setShowModal] = useState(false);
   const [showModalPro, setShowModalPro] = useState(false);
   const [professionalsHistory, setProfessionalsHistory] = useState(false);
@@ -44,11 +44,7 @@ export default function Layout({ children }) {
         onClose={closeModal}
         professionalsHistory={professionalsHistory}
       />
-      <CtaProfessionals
-         show={showModalPro}
-         onClose={closeModalPro}
-
-      />
+      <CtaProfessionals show={showModalPro} onClose={closeModalPro} />
       <Footer />
     </div>
   );
