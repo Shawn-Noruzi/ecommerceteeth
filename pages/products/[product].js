@@ -9,7 +9,7 @@ export default function ProductPage({ product }) {
   
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-8">
       <ProductPageContent product={product} />
     </div>
   )
