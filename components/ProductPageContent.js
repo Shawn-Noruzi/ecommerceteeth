@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useState } from "react";
 import ProductForm from "./ProductForm";
 import RecommendedList from "./RecommendedList";
@@ -10,7 +9,10 @@ export default function ProductPageContent({ product }) {
     console.log("image", image);
     images.push({ image: image.node.originalSrc, alt: image.node.altText });
   });
-  const [mainImage, setmainImage] = useState(images[0]);
+  const [mainImage, setmainImage] = useState({
+    img: images[0].image,
+    alt: images[0].altText,
+  });
   console.log("mainImage", mainImage);
   console.log("proudct", product);
   console.log("images", images);
@@ -31,13 +33,23 @@ export default function ProductPageContent({ product }) {
         <div className="relative w-full flex">
           <div className="flex flex-col justify-center">
             {images.map((item) => (
-              <img src={item.image} alt={item.alt} className="w-20 m-4" />
+              <img
+                onClick={() => setmainImage({ img: item.image, alt: item.alt })}
+                src={item.image}
+                alt={item.alt}
+                className="w-20 m-1"
+              />
             ))}
           </div>
-          <div className="w-full max-w-md border bg-white rounded-2xl overflow-hidden shadow-lg md:w-1/2">
+          <div className="w-full  border bg-white rounded-2xl overflow-hidden shadow-lg md:w-3/4 h-full">
             <div className="relative w-full">
-              <div className="mt-2 w-4/5 h-96">
-                <Image src={mainImage.image} alt="" layout="fill" />
+              <div className="h-96 w-full bg-gray-200 absolute top-0 -z-5"></div>
+              <div className="w-full h-[800px] ">
+                <img
+                  src={mainImage.img}
+                  alt={mainImage.alt}
+                  className="absolute top-0 left-0 object-cover w-full h-full  transition-opacity opacity-100"
+                />
               </div>
             </div>
           </div>

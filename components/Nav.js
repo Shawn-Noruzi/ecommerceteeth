@@ -28,15 +28,17 @@ export default function Nav({
   });
 
   const handleClickOutside = (e) => {
-    if (!wrapperRef?.current?.contains(e.target)) {
-      setToggleCountry(false);
-    }
-    if (
-      !wrapperRefProfile?.current?.contains(e.target) &&
-      !wrapperRefProfileMenu?.current?.contains(e.target)
-    ) {
-      console.log("handleClickProfile outside click");
-      setOpenProfile(false);
+    if (toggleCountry) {
+      if (!wrapperRef?.current?.contains(e.target)) {
+        setToggleCountry(false);
+      }
+      if (
+        !wrapperRefProfile?.current?.contains(e.target) &&
+        !wrapperRefProfileMenu?.current?.contains(e.target)
+      ) {
+        console.log("handleClickProfile outside click");
+        setOpenProfile(false);
+      }
     }
   };
 
@@ -196,7 +198,7 @@ export default function Nav({
             </Link>
             <div
               className={
-                "items-center hidden lg:flex w-80 " +
+                "ml-9 items-center hidden lg:flex w-80 " +
                 (session?.user?.professional
                   ? "justify-evenly"
                   : "justify-between")
