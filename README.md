@@ -2,6 +2,7 @@
 **Feature List for ecommerceteeth**
 
 **Core Technologies & Integrations**
+
 Next.js: Utilized for server-side rendering, static site generation, and building the overall React application.
 Heroku: Deployment platform for hosting the web application.
 Postgres DB: Chosen as the relational database for storing application data.
